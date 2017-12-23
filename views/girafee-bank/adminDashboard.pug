@@ -1,0 +1,48 @@
+extends adminLayout
+block adminNavigation
+    include adminNavigation
+block content
+    section(class="services")
+        h2(class="section-title") #{title}
+            p(class="desc")
+
+
+        div(class="container")
+            div(class="row")
+                div(class="col-md-6 text-right")
+                    h4#clientUportId
+                    h4#clientName
+                    script
+                        include uport.js
+            div(class="row")
+                div(class="col-md-4 col-sm-6 col-xs-12")
+                    div(class="media")
+                        div(class="media-left media-top")
+                            i(class="fa fa-user")
+                        div(class="media-body")
+                            h4(class="media-heading") Request to attest Personal Data and Account
+                            p
+                                a(href="/admin/request" class="bold") View all user requests to attest Identity.
+                div(class="col-md-4 col-sm-6 col-xs-12")
+                    div(class="media")
+                        div(class="media-left media-top")
+                            i(class="fa fa-user")
+                        div(class="media-body")
+                            h4(class="media-heading") Attest Personal Data and Account
+                            p Step 1. Person provides proof of Identity (e.g. passport or others).&nbsp;
+                                a(href="/admin/request" class="bold") Attest Identity.
+                            p Step 2. Attestations sent to blockhain Registry.
+
+                div(class="col-md-4 col-sm-6 col-xs-12")
+                    div(class="media")
+                        div(class="media-left media-top")
+                            i(class="fa fa-database")
+                        div(class="media-body")
+                            h4(class="media-heading") Registry
+                            p Step 1. Send the request to a person to ask him/her share his/her verified data using uPort.&nbsp;
+                                a(href="/admin/requestdata" class="bold") Send the request.
+                            p Step 2. If the person agree to share it, go to the Registry and get verified data.&nbsp;
+                                a(href="/admin/registry/data" class="bold") Get the data.
+                            p Step 3.Check data authencity, ownership and validity .&nbsp;
+                                    a(href="/admin/registry/data" class="bold") Get the data.
+

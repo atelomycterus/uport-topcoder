@@ -1,0 +1,68 @@
+extends layout
+
+block content
+    section(class="services")
+        h2(class="section-title") #{title}
+        p(class="desc")
+            strong You need to visit our branch to verify your digital identity
+
+        div(class="container")
+            div(class="row")
+                div(class="col-md-6 text-right")
+                    script
+                        include uport.js
+            div(class="row")
+                div(class="col-md-8")
+                    section
+                        div(class="heading")
+                            h3 1.Login with your uPort ID
+                            p Please click on the button top connect with uPort and scan the QR code
+                        button#connectUportBtn(class="btn btn-sm btn-primary" onclick="uportConnect()") Connect uPort
+
+                        div(class="heading")
+                            h3 2.Choose what personal data you want to attest with us
+
+                        form(action="" method="POST")
+                            div(class="row")
+                                div(class="col-sm-12")
+                                    div(class="form-group")
+                                        label(for="clientUportId") uPort Id
+
+                                        input(type="text" class="form-control" id="clientUportId" name="clientUportId" value='' readonly="readonly")
+                                div(class="col-sm-6")
+                                    div(class="form-group")
+                                        label(for="clientName") Name
+                                        input(type="text" class="form-control" id="clientName" name="clientName" value='')
+
+                                div(class="col-sm-6")
+                                    div(class="form-group")
+                                        label(for="phone") Phone
+                                        input(type="text" class="form-control" id="phone" name="phone")
+                                div(class="col-sm-12")
+                                    p I want to attest the next data:
+                                    div(class="checkbox")
+                                        label
+                                            input(type="checkbox" id='creditCardLimitOption' name='creditCardLimitOption' value="true")
+                                            | Credit Card Limit
+                                        p  If you have Credit Card in our bank. We will show that you’re a reliable person and confirm your Credit Limit to pay for any services/products online without additional checks.
+                                    div(class="checkbox")
+                                            label
+                                                input(type="checkbox" id='phoneOption' name='phoneOption' value="true")
+                                                | Phone
+                                    div(class="checkbox")
+                                        label
+                                            input(type="checkbox" id='passportOption' name='passportOption' value="true")
+                                            | Passport
+                                    div(class="checkbox")
+                                        label
+                                            input(type="checkbox" id='ageOption' name='ageOption' value="true")
+                                            | Age
+                                        p We can confirm that you are 18+ or 21+ based on your Passport data.
+                                    div(class="checkbox")
+                                        label
+                                            input(type="checkbox" id='switchingBankAccountOption' name='switchingBankAccountOption' value="true")
+                                            | Switching bank account to Girafee Bank account
+                                        p   If you have an verified bank account in Uport App. We transfer all your payment orders in and out (such as salary and Direct Debits) to your new Girafee Bank account,
+                                            | and also set up a payment redirection for any credits or debits from your old account.
+                                div(class="col-sm-12 text-right")
+                                    button(type="submit" class="btn btn-sm btn-primary") Send

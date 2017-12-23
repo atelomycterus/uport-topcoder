@@ -1,0 +1,15 @@
+div(class="heading")
+    h3 Identity
+    div(class="row")
+        div(class="col-sm-12")
+            div(class="form-group")
+                label(for="uportId") uPort Id
+
+                input(type="text" class="form-control" "uportId"
+                value=`${request.uportId}` readonly="readonly")
+        div(class="col-sm-6")
+            div(class="form-group")
+                label(for="name") Name
+                input(type="text" class="form-control" id="name" name="name" value=`${request.name}` readonly="readonly")
+        div(class="col-sm-12 text-right")
+            a(href='/admin/account/' + `${request.accountId}` + '/checkuportid' target="blank" class="btn btn-sm btn-primary") Check uPortId

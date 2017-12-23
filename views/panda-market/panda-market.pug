@@ -1,0 +1,50 @@
+extends layout
+
+block content
+    section(class="services")
+        h2#serviceUportApp(class="section-title") #{title}
+        p#serviceUportId(class="desc") #{serviceUportId}
+        div(class="container")
+            div(class="row")
+                div(class="col-md-12 text-right")
+                    h4#clientUportId
+                    h4#clientName
+                    script
+                       include uport.js
+                section(class="category-content col-sm-9")
+                   h2(class="category-title") PRODUCTS
+                   ul(class="media-list")
+                       li(class="media")
+                           div(class="media-left")
+                               a(href="#" title="Post")
+                                   img(class="media-object" src="img/h1.jpeg" alt="Post")
+                           div(class="media-body")
+                                h3(class="media-heading")
+                                    a(href="#" title="Post Title") Samsung UE49MU6400UXXU 49 inch, 4K
+                                p Look out for the Ultra HD Certified logo. This logo is a badge of honour that identifies the TV can reach specific Ultra HD picture quality and resolution benchmarks. Displaying the Ultra HD Certified logo means that the manufacturer has certified that these products meet Digital Europe’s requirements for an Ultra HD TV. You need this logo to ensure your TV has true Ultra HD colour and clarity.
+                                |
+                                | Soaking up movies, games, websites and more in stunning 3840 × 2160 resolution is an incredible treat for your eyes. This TV has even been granted 4K Certified Ultra HD status for reaching the highest 4K technology standards.
+                                p
+                                |
+                                h2(class="text-success") 800 usd
+
+                                a(href ="/quickcheck" target='blank' class="btn btn-primary" role="button") BUY with one Click
+                                //button(class="btn btn-sm btn-primary" id="buyBtn" onclick="uportConnect()") BUY with one Click
+                aside(class="sidebar col-sm-3")
+                   div(class="widget")
+                   h4 Quick Check
+                   p Connect with uPort to know if you'll be accepted to pay by Credit Card.
+                   div
+                       p
+                        strong Step 1.
+                        |We request User to share his/her Age, Credit Card Limit using uPort mobile application&nbsp;
+                        br
+                        strong Step 2.
+                        |If User share the requested data and it's verified then checking his/her data in AttestedDataRegistry smart contract.
+                        |In case the bank changes CreditCardLimit, we will check data in AttestedDataRegistry
+                   a(href ="/quickcheck" class="btn btn-info" target='blank' role="button") Check Now
+            div(class="row")
+               div(class="col-md-12 text-center")
+                   div(class="text well") Credit provided, subject to credit and account status, by &nbsp;
+                    a(href='http://localhost:8081/' target='blank') Giraffe Bank.
+                    | &nbsp;uPortId: 2otc2H5DoY78vgbxEc5gSiide5VUx3asGg1. Authorised and regulated by the Financial Conduct Authority. Over 18's only. 1 month = 28 days, 12 months = 12 calendar months.

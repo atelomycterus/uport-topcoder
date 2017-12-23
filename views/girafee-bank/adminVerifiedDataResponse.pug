@@ -1,0 +1,61 @@
+extends adminLayout
+block adminNavigation
+    include adminNavigation
+block content
+    section(class="services")
+        h2(class="section-title") #{title}
+            p(class="desc")
+
+        div(class="container")
+            div(class="row")
+                div(class="col-md-6 text-right")
+                    script
+                        include uport-admin.js
+            div(class="row")
+                div(class="col-md-8")
+                     section
+                        div(class="heading")
+                            h3 Step 1. Request a person to share data
+                            div(class="row")
+                                div(class="col-sm-12")
+                                    form(action="" method="POST" target="_blank")
+                                        div(class="form-group")
+                                            label(for="uportId") uPort Id
+                                            input(type="text" class="form-control" id="uportId" name="uportId"
+                                            value="")
+                                        div(class="form-group")
+                                            label(for="dataType") Data Type
+                                                div(class="checkbox")
+                                                    label
+                                                        input(type="checkbox"  id="dataType" name="dataType" value="Age")
+                                                        |Age
+                                                div(class="checkbox")
+                                                    label
+                                                        input(type="checkbox"  id="dataType" name="dataType" value="FullName")
+                                                        |Full Name
+                                                div(class="checkbox")
+                                                    label
+                                                        input(type="checkbox"  id="dataType" name="dataType" value="CreditCardLimit")
+                                                        |Credit Card Limit
+                                                div(class="checkbox")
+                                                    label
+                                                        input(type="checkbox" id="dataType" name="dataType" value="Passport")
+                                                        |Passport
+                                        button(type="submit" class="btn btn-template-main") Send the request
+
+                        div(class="heading")
+                            h3 Step 2. Get verified person data
+                            div(class="row")
+                                div(class="col-sm-12")
+                                    div#result(class="alert alert-info")
+                                    div(class="panel panel-default")
+                                        div(class="panel-heading") Passport
+                                        div(class="panel-body")
+
+                                            div(class="form-group")
+                                                label(for="name") Full Name
+                                                input(type="text" class="form-control" id="fullname" name="fullname")
+
+
+                                            div(class="col-sm-12 text-right")
+                                                button(type="submit" class="btn btn-template-main" onclick='getAttestedPassport()')

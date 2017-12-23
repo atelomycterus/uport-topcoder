@@ -1,0 +1,36 @@
+extends adminLayout
+block adminNavigation
+    include adminNavigation
+block content
+    section(class="services")
+        h2(class="section-title") #{title}
+        p(class="desc")
+            strong
+
+        div(class="container")
+            div(class="row")
+                div(class="col-md-6 text-right")
+                    script
+                        include uport.js
+            div(class="row")
+                div(class="col-md-8")
+                    section
+                        div(class="heading")
+                            table(class="table table-bordered")
+                                thead
+                                    tr
+                                        th Id
+                                        th uportId
+                                        th Name
+                                        th
+                                        th
+                                tbody
+                                each item in request
+                                    tr
+                                        td #{item.accountId}
+                                        td #{item.uportId}
+                                        td #{item.name}
+                                        td(class='text-center')
+                                            a(href=`/admin/account/${item.accountId}`) Attest Data
+                                        td(class='text-center')
+                                            a(href=`/admin/account/${item.accountId}/registry`) View Verified Data

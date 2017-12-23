@@ -1,0 +1,137 @@
+extends adminLayout
+block adminNavigation
+    include adminNavigation
+block content
+    section(class="services")
+        h2(class="section-title") #{title}
+            p(class="desc")
+
+        div(class="container")
+            div(class="row")
+                div(class="col-md-6 text-right")
+                    h4#clientUportId
+                    h4#clientName
+                    script
+                        include uport-admin.js
+            div(class="row")
+                div(class="col-md-8")
+                     section
+                        include adminAccountUportId
+                        div(class="heading")
+                            h3 Attest Identity Data
+                            div(class="row")
+                                div(class="col-sm-12")
+                                    div#result
+                                    div(class="panel panel-default")
+                                        div(class="panel-heading") Passport
+                                        div(class="panel-body")
+                                            form(action="/admin/account/"+`${request.accountId}`+"/attest/passport" method="POST" target="_blank")
+                                                input(type="hidden" class="form-control" id="accountId" name="accountId"
+                                                value=`${request.accountId}` readonly="readonly")
+                                                input(type="hidden" class="form-control" id="uportId" name="uportId"
+                                                value=`${request.uportId}` readonly="readonly")
+
+                                                div(class="checkbox")
+                                                    label
+                                                        input(type="checkbox" id='fullNameOption' name='fullNameOption' checked=(request.passportOption == 1))
+                                                        | Full Name
+                                                div(class="form-group")
+                                                    label(for="fullName") Full Name
+                                                    input(type="text" class="form-control" id="fullName" name="fullName" value=`${request.name}`)
+
+                                                div(class="checkbox")
+                                                    label
+                                                        input(type="checkbox" id='passportOption' name='passportOption' checked=(request.passportOption == 1))
+                                                        | Passport
+                                                div(class="form-group")
+                                                    input(type="area" class="form-control" id='passport' name='passport')
+
+                                                div(class="checkbox")
+                                                    label
+                                                        input(type="checkbox" id='ageOption' name='ageOption' checked=(request.ageOption == 1))
+                                                        | Age
+                                                    p We can confirm that you are 18+ or 21+ based on your Passport data.
+                                                div(class="form-group")
+                                                    label(for="age") Age
+                                                        select(class="form-control" id="age" name="age")
+                                                            option 18+
+                                                            option 21+
+                                                p(class="text-info") Clicking on 'Attest Data' - Data will be attested by Girafee Bank. As the result of this operation User can see it in his/her mobile uPort application.&nbsp;
+
+                                                div(class="form-group text-right")
+                                                    button(class="btn btn-sm btn-primary" id="connectUportBtn") Attest Data
+
+
+                                            div(class="checkbox")
+                                                label
+                                                    input(type="checkbox" id='agreeShare' name='publishOption' checked='true')
+                                                    | Agree to publish attested data
+
+                                            p(class="text-info") Attested data might be added in AttestedDataRegistry. Attested Data will be saved in AttestedDataRegistry smart contract. Other service(banks, stores) might get access to verified data if user allows.
+                                            |The Registry keeps records like  a [User's uPortId, dataType(Age, Passport and others),[Validators'uPortId, hash of data, expiredDate, attestedDate]].
+                                            |User's uPortId + dataType might have several attestations, e.g. data might be attested by different validators(different banks, agencies, telecom).
+
+                                            div(class="form-group text-right")
+                                                //button(class="btn btn-sm btn-primary" id="connectUportBtn" onclick="uportConnect()") Connect uPort
+
+                                                //if request.attestedData
+                                                button(type="button" class="btn btn-sm btn-primary" onclick='addAttestedPassport('+request.attestedData +')') Add in Registry
+                                                //else
+                                                   // button(type="button" class="btn btn-sm btn-primary disabled" onclick='addAttestedPassport()') Add in Registry
+
+                                div(class="col-sm-12")
+                                    div(class="panel panel-default")
+                                        div(class="panel-heading") Credit Card Limit
+                                        div(class="panel-body")
+                                            form(action="/admin/account/"+`${request.accountId}`+"/attest/creditcardlimit" method="POST")
+                                                input(type="hidden" class="form-control" id="uportId" name="uportId"
+                                                value=`${request.uportId}` readonly="readonly")
+
+                                                div(class="checkbox")
+                                                    label
+                                                        input(type="checkbox" id='creditCardLimitOption' name='creditCardLimitOption' checked=(request.creditCardLimitOption==1))
+                                                        | Credit Card Limit
+                                                    p  If you have Credit Card in our bank. We will show that you’re a reliable person and confirm your Credit Limit to pay for any services/products online without additional checks.
+
+                                                div(class="form-group")
+                                                    label(for="accountId") Card Id
+                                                    input(type="text" class="form-control" id='cardId' name='cardId')
+
+                                                div(class="form-group")
+                                                    label(for="creditCardLimit") Approved Limit (USD)
+                                                    input(type="text" class="form-control" id='creditCardLimit' name='creditCardLimit')
+
+                                                div(class="col-sm-12 text-right")
+                                                    button(type="submit" class="btn btn-sm btn-primary") Attest Data
+                                div(class="col-sm-12")
+                                    div(class="panel panel-default")
+                                        div(class="panel-heading") Switching bank account to Girafee Bank account
+                                        div(class="panel-body")
+                                            form(action="/admin/account/"+`${request.accountId}`+"/attest/switchaccount" method="POST")
+                                                input(type="hidden" class="form-control" id="uportId" name="uportId"
+                                                value=`${request.uportId}` readonly="readonly")
+                                            div(class="checkbox")
+                                                label
+                                                    input(type="checkbox" id='switchingBankAccountOption' name='switchingBankAccountOption' checked=(request.switchingBankAccountOption ==1))
+                                                    | Switching bank account to Girafee Bank account
+                                                p   If you have an verified bank account in Uport App. We transfer all your payment orders in and out (such as salary and Direct Debits) to your new Girafee Bank account,
+                                                    | and also set up a payment redirection for any credits or debits from your old account.
+
+                                                div(class="col-sm-12 text-right")
+                                                    button(type="submit" class="btn btn-sm btn-primary") Attest Data
+                                div(class="col-sm-12")
+                                    div(class="panel panel-default")
+                                        div(class="panel-heading") Phone
+                                        div(class="panel-body")
+                                            form(action="/admin/account"+`${request.accountId}`+"/attest/phone" method="POST")
+                                                input(type="hidden" class="form-control" id="uportId" name="uportId"
+                                                value=`${request.uportId}` readonly="readonly")
+                                                div(class="checkbox")
+                                                    label
+                                                        input(type="checkbox" id='phoneOption' name='phoneOption'  checked=(request.phone == 1))
+                                                        | Phone
+                                                div(class="form-group")
+                                                     label(for="phone") Phone
+                                                     input(type="text" class="form-control" id="phone" name="phone" value=`${request.phone}`)
+                                                div(class="col-sm-12 text-right")
+                                                    button(type="submit" class="btn btn-sm btn-primary") Attest Data

@@ -1,0 +1,26 @@
+extends adminLayout
+
+block content
+    div(class="container")
+        div(class="row")
+            div(class="col-sm-4")
+            div(class="col-sm-4")
+                div(class="card")
+                    h2(class="section-title") Admin Area
+                    div(class="card-body")
+                        div(class="heading text-center")
+                            h3 Login
+                        form(action="/admin/login" method="POST")
+                            div(class="form-group")
+                                label(for="username") Username
+                                input(type="text" class="form-control" id="username" name="username" value='')
+                            div(class="form-group")
+                                label(for="password") Password
+                                input(type="password" class="form-control" id="password" name="password")
+                            button(type="submit" class="btn btn-sm btn-primary") Log in
+                            p
+                            small * Use admin/admin
+                            hr
+                        button#connectUportBtn(class="btn btn-sm btn-primary" onclick="") Log in with uPort
+                        p Not implemented yet. As the option Log in might be implemented with private Ethereum network. Any bank employee has verified roles and permissions in uPort mobile application.
+            div(class="col-sm-4")

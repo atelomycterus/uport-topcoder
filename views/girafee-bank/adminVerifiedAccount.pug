@@ -1,0 +1,35 @@
+extends adminLayout
+block adminNavigation
+    include adminNavigation
+block content
+    section(class="services")
+        h2(class="section-title") #{title}
+            p(class="desc")
+
+        div(class="container")
+            div(class="row")
+                div(class="col-md-6 text-right")
+                    script
+                        include uport-admin.js
+            div(class="row")
+                div(class="col-md-8")
+                     section
+                        include adminAccountUportId
+                        div(class="heading")
+                            h3 Get verified data
+                            div(class="row")
+                                div(class="col-sm-12")
+                                    div#result
+                                    div(class="form-group")
+                                        label(for="dataType") Data Type
+                                            select(class="form-control" id="dataType" name="dataType")
+                                                option Age
+                                                option FullName
+                                                option Passport
+                                                option CreditCardLimit
+                                    p(class="text-info") Clicking on 'Load Attested Data' - Data will be loaded from AttestedDataRegistry.
+
+                                    div(class="form-group text-right")
+                                        - var  t= "$('#dataType').value"
+                                        button(class="btn btn-sm btn-primary" id="loadDataBtn"
+                                        onclick='getAttestedPassport("' + request.uportId + '", '+ t +');') Load Attested Data
