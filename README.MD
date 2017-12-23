@@ -3,7 +3,7 @@
 uPort Mobile Application enables users to share and manage their verified identity data. 
 Initially User downloads the mobile application and sets up only basic data(e.g. name). 
 With uPort Identity we can build a decentrailized ecosystem which includes the following 
-participants (see process/architecture.png) ![Architecture](./process/architecture.png "Architecture"):
+participants (see process/architecture.png) ![Architecture](./process/architecture.png "Architecture").
 Validators (e.g. banks, telecom, government agencies and others) check and validate 
 a person identity. They can also attest specific data (e.g. Bank A attests that 150 USD Credit Card Limit is provided to User).
 Validator attest data and push user notifications. 
@@ -50,7 +50,10 @@ She comes in a bank branch for personal identification and  brings her passport 
 The bank validates and attests her digital identity and her requested data (Age (must be 18+), CreditCatdLimit (minimum 100 Usd)). 
 The shop can works with different banks and check quickly verified credentials (Age, CreditCardLimit).
  
-Please have a look at business proceess (images: process/attest.jpg, process/purchase.jpg).
+Please have a look at business process 
+(images: process/attest.png, process/purchase.png).
+![Attest data](./process/attest.png "Attest data")  
+![Purchase a product](./process/purchase.png "Purchase a product")
 An once-issued attestation like this can be used by a multitude of service-providers, dapps, and government agencies, and can potentially greatly decrease the cost of on-boarding and compliance.	
 
 
